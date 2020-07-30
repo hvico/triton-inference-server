@@ -50,6 +50,11 @@ for l in libgrpcclient.so libgrpcclient_static.a libhttpclient.so libhttpclient_
     fi
 done
 
+# workdir in this test case is /tmp
+# we need to copy the files from /workspace
+cp /workspace/qa/L0_client/grpc_client.cc /tmp
+cp /workspace/qa/L0_client/http_client.cc /tmp
+
 # Test a simple app using Triton gRPC API
 g++ grpc_client.cc -o simple_grpc_client -Itriton_client/include \
   -L$(pwd)/triton_client/lib -I/workspace/builddir/grpc/include \
